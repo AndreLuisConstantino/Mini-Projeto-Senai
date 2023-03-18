@@ -14,7 +14,6 @@ const getContato = function (numeroDoContato) {
     let contatos = []
     let status = false
     let arrayMessages = []
-    let jsonUser = {}
 
 
     arquivoContatosConversas.forEach(function (usuario) {
@@ -42,4 +41,6 @@ const getContato = function (numeroDoContato) {
     }
 }
 
-console.log(getContato('11966578996'))
+module.exports = {
+    getContato
+}
