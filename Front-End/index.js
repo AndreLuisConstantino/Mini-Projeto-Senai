@@ -1,19 +1,21 @@
 'use strict'
 
-import { contatos } from "./recursos/contatos.js"
+import { pegarContatos } from "./contatosAPI.js"
+
+const contatos = await pegarContatos('11966578996')
 
 const criarContato = (contato, indice) => {
     const contact = document.createElement('div')
     contact.classList.add('contact-card__container')
-    contact.setAttribute('id', 'id-' + indice)
 
     contact.addEventListener('click', (event) => {
+        descerConversa()
         carregarConversas(indice)
-        console.log(contatos[indice])
     })
 
     const fotoDePerfil = document.createElement('img')
     fotoDePerfil.classList.add('contact-card__image')
+    fotoDePerfil.alt = 'Foto de perfil usuário'
     fotoDePerfil.src = `./${contato.image}`
 
     const nomeComDescricao = document.createElement('div')
@@ -41,12 +43,18 @@ const carregarContato = () => {
 }
 
 const carregarConversas = (indice) => {
+    carregarMensagensComHeader(indice)
+}
+
+const carregarMensagensComHeader = (indice) => {
+
     const container = document.getElementById('container-messages')
     const header = document.createElement('div')
     header.classList.add('contact-information__container')
 
     const imagemDePerfil = document.createElement('img')
     imagemDePerfil.classList.add('contact-information__image')
+    imagemDePerfil.alt = 'Foto de perfil usuário'
     imagemDePerfil.src = `./${contatos[indice].image}`
 
     const juntarImagemComTextos = document.createElement('div')
@@ -67,8 +75,42 @@ const carregarConversas = (indice) => {
     juntarImagemComTextos.append(imagemDePerfil, juntarTextos)
     header.append(juntarImagemComTextos)
 
+    const messagesContainer = document.createElement('div')
+    messagesContainer.classList.add('messages__container')
 
-    container.append(header)
+    const inputContainer = document.createElement('div')
+    inputContainer.classList.add('message-input__container')
+
+    const inputMessages = document.createElement('input')
+    inputMessages.classList.add('write-message')
+
+    const icone = document.getElementById('icone')
+    inputContainer.replaceChildren(inputMessages, icone)
+
+    contatos[indice].messages.forEach(function (mensagem) {
+        //Processo para criar uma div
+        const divMensagem = document.createElement('div')
+        if (mensagem.sender == 'me') {
+            divMensagem.classList.add('message-text-contact__container')
+        } else {
+            divMensagem.classList.add('message-text__container')
+        }
+
+        const textMensagem = document.createElement('p')
+        textMensagem.textContent = mensagem.content
+
+        const textHorario = document.createElement('span')
+        textHorario.textContent = mensagem.time
+
+        divMensagem.append(textMensagem, textHorario)
+        messagesContainer.append(divMensagem)
+        container.replaceChildren(messagesContainer, header, inputContainer)
+    })
+
+}
+
+const descerConversa = () => {
+    window.scroll(0, 1100)
 }
 
 carregarContato()

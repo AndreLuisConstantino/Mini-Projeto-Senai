@@ -220,7 +220,7 @@ const contatos = {
             {
               "name": "José Maria da Silva",
               "description": "Developer",
-              "image": "img/contact10.png",
+              "image": "img/contact3.png",
               "messages": [
                 {
                   "sender": "me",
@@ -247,7 +247,7 @@ const contatos = {
             {
               "name": "John Guttemberg",
               "description": "Free",
-              "image": "img/contact20.png",
+              "image": "img/contact5.png",
               "messages": [
                 {
                   "sender": "me",
@@ -274,7 +274,7 @@ const contatos = {
             {
               "name": "George Mikael",
               "description": "Backend Developer",
-              "image": "img/contact30.png",
+              "image": "img/contact7.png",
               "messages": [
                 {
                   "sender": "me",
@@ -301,7 +301,7 @@ const contatos = {
             {
               "name": "Cristian Lee",
               "description": "Software Engineer",
-              "image": "img/contact4.png",
+              "image": "img/contact7.png",
               "messages": [
                 {
                   "sender": "me",
