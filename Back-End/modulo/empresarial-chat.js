@@ -35,7 +35,7 @@ const getContato = function (numeroDoContato) {
         status = true
     })
     if (status == true) {
-        return contatos
+        return {contatos}
     } else {
         return status
     }

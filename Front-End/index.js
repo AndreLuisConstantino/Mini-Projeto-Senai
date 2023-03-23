@@ -2,7 +2,7 @@
 
 import { pegarContatos } from "./contatosAPI.js"
 
-const contatos = await pegarContatos('11966578996')
+const contatos = await pegarContatos('11955577796')
 
 const criarContato = (contato, indice) => {
     const contact = document.createElement('div')

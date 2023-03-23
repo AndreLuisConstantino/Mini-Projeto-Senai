@@ -32,7 +32,7 @@ app.get('/v1/senai/chat/numero/:telefone', cors(), async function(request, respo
     let statusCode
     let dadosContato = {}
 
-    if(numeroDeTelefone == '' || numeroDeTelefone == undefined || isNaN(numeroDeTelefone) || numeroDeTelefone != 11){
+    if(numeroDeTelefone == '' || numeroDeTelefone == undefined || isNaN(numeroDeTelefone)){
         statusCode = 400
         dadosContato.message = 'Não foi possivel processar os dados de entrada (número de telefone) que foi enviado não corresponde ao exigido, confira o valor, pois não pode ser vazio, precisa ser numero'
     } else {
